@@ -1,5 +1,5 @@
 //TODO: Add spining loader
-export const Loader = ({isLoading}) => 
+export const Loader = ({ isLoading }) =>
 	<span>
-	  {isLoading ? 'loading...' : ''}
+		{isLoading ? 'loading...' : ''}
 	</span>

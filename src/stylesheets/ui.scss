@@ -17,6 +17,7 @@ h1 {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
   .feather-cover {
     position: absolute;
     width: 100%;
@@ -25,6 +26,7 @@ h1 {
   }
   form{
     z-index: 1;
+
     input[type="text"] {
       max-width: 360px;
       font-size: 1.5rem;
@@ -49,6 +51,7 @@ h1 {
 .weather-card-wrapper {
   background: $darkPurpleEggplant;
   padding: 30px;
+
   .weather-card {
       max-width: 300px;
       margin: 0px auto;

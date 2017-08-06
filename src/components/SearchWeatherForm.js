@@ -5,16 +5,16 @@ export class SearchWeatherForm extends Component {
 
   constructor(props) {
     super(props)
-		this.submit = this.submit.bind(this)
-	}
+    this.submit = this.submit.bind(this)
+  }
 
   submit(e) {
-      e.preventDefault()
-      this.props.onFetchWeather(this.refs._city.value)
+    e.preventDefault()
+    this.props.onFetchWeather(this.refs._city.value)
   }
-    
 
-  render () {
+
+  render() {
 
     const { city, isLoading, onFetchWeather } = this.props
 
@@ -23,9 +23,9 @@ export class SearchWeatherForm extends Component {
         <div className="feather-cover"></div>
         <form onSubmit={this.submit}>
           <input type="text" ref="_city"
-					   defaultValue={city}/>
+            defaultValue={city} />
           <button>Search</button>
-          <Loader isLoading={isLoading}/>	
+          <Loader isLoading={isLoading} />
         </form>
       </div>
     )
