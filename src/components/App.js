@@ -8,58 +8,58 @@ import 'whatwg-fetch'
 
 export class App extends Component {
 
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
 
-		this.state = {
-			city: "Shanghai",
-			isLoading: false,
-			hasError: false,
-			errorMessage: ""
-		}
+    this.state = {
+      city: "Shanghai",
+      isLoading: false,
+      hasError: false,
+      errorMessage: ""
+    }
 
-		this.fetchWeather = this.fetchWeather.bind(this)
-	}
+    this.fetchWeather = this.fetchWeather.bind(this)
+  }
 
-	fetchWeather(city) {
-		this.setState({ isLoading: true })
+  fetchWeather(city) {
+    this.setState({ isLoading: true })
 
-		const url = PRE_URL + city + APPID
+    const url = PRE_URL + city + APPID
 
-		//Fetch weather and dispatch state
-		fetch(url)
-			.then((response) => {
-				this.setState({ isLoading: false })
+    //Fetch weather and dispatch state
+    fetch(url)
+      .then((response) => {
+        this.setState({ isLoading: false })
 
-				if (!response.ok) {
-					this.setState({ errorMessage: response.statusText })
-					throw new Error(response.statusText)
-				}
+        if (!response.ok) {
+          this.setState({ errorMessage: response.statusText })
+          throw new Error(response.statusText)
+        }
 
-				return response
-			})
-			.then((response) => response.json())
-			.then((weather) => this.setState({ weather: weather, city: city, hasError: false }))
-			.catch(() => this.setState({ weather: null, hasError: true }))
-	}
+        return response
+      })
+      .then((response) => response.json())
+      .then((weather) => this.setState({ weather: weather, city: city, hasError: false }))
+      .catch(() => this.setState({ weather: null, hasError: true }))
+  }
 
-	componentDidMount() {
-		this.fetchWeather(this.state.city);
-	}
+  componentDidMount() {
+    this.fetchWeather(this.state.city);
+  }
 
-	render() {
-		return (
-			<div className="app">
-				<Header />
-				<SearchWeatherForm city={this.state.city}
-					isLoading={this.state.isLoading}
-					onFetchWeather={this.fetchWeather} />
-				{!this.state.hasError && this.state.weather ?
-					<WeatherCard weather={this.state.weather}
-						city={this.state.city} /> :
-					<ErrorCard errorMessage={this.state.errorMessage} />
-				}
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div className="app">
+        <Header />
+        <SearchWeatherForm city={this.state.city}
+          isLoading={this.state.isLoading}
+          onFetchWeather={this.fetchWeather} />
+        {!this.state.hasError && this.state.weather ?
+          <WeatherCard weather={this.state.weather}
+            city={this.state.city} /> :
+          <ErrorCard errorMessage={this.state.errorMessage} />
+        }
+      </div>
+    )
+  }
 }
