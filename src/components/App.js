@@ -1,6 +1,8 @@
 import { Component } from 'react'
 import { SearchWeatherForm } from './SearchWeatherForm'
-import { ShowWeather } from './ShowWeather'
+import { WeatherCard } from './WeatherCard'
+import { ErrorCard } from './ErrorCard'
+import { PRE_URL, APPID} from '../constants'
 
 export class App extends Component {
 
@@ -20,23 +22,27 @@ export class App extends Component {
   fetchWeather(city) {
     this.setState({ isLoading: true })
 
-    let url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=3445f33ffd943bca0c24fa0e485ff489"
+    const url = PRE_URL + city + APPID
 
-    //Fetch weather, dispatch state
+    //Fetch weather and dispatch state
     fetch(url)
       .then((response) => {
+        this.setState({ isLoading: false})
+        
         if (!response.ok) {
-          this.setState({ errorMessage: response.statusText })
+          this.setState({ errorMessage: response.statusText})
           throw new Error(response.statusText)
         }
-
-        this.setState({ isLoading: false,hasError: false})
 
         return response
       })
       .then((response) => response.json())
-      .then((weather) => this.setState({ weather}))
-      .catch(() => this.setState({hasError: true}))
+      .then((weather) => this.setState({ weather: weather, city: city, hasError: false}))
+      .catch(() => this.setState({weather: null, hasError: true}))
+  }
+
+  componentDidMount() {
+    this.fetchWeather(this.state.city);
   }
 
   render() {
@@ -44,10 +50,12 @@ export class App extends Component {
 			<div className="app">
         <SearchWeatherForm  city={this.state.city}
                             isLoading={this.state.isLoading}
-                            hasError={this.state.hasError}
-                            errorMessage={this.state.errorMessage}
                             onFetchWeather={this.fetchWeather}/>	
-        <ShowWeather />	
+        { !this.state.hasError && this.state.weather ? 
+          <WeatherCard  weather={this.state.weather}
+                        city={this.state.city} />	: 
+          <ErrorCard errorMessage={this.state.errorMessage} />
+        }
 			</div>
 		)
 	}
