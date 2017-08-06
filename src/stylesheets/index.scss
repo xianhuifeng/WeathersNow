@@ -1,0 +1,14 @@
+@import "global";
+
+html,
+body,
+div#react-container,
+div.app {
+  font-family: Lato,Helvetica,Arial,sans-serif;
+  color: $offWhite;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background: $mediumGrayMetal;
+}

@@ -29,11 +29,11 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader!postcss-loader'
+				loader: 'style-loader!css-loader'
 			},
 			{
 				test: /\.scss$/,
-				loader: 'style-loader!css-loader!postcss-loader!sass-loader'
+				loader: 'style-loader!css-loader!sass-loader'
 			}
 		]
 	}

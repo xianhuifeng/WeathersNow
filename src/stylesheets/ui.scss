@@ -1,0 +1,69 @@
+@import "global";
+
+h1 {
+  color: $lightPurpleRose;
+}
+
+.search-weather{
+  height: 40vh;
+  display: flex;
+  position: relative;    
+  align-items: center;
+  justify-content: center;
+  background-image: url('http://localhost:3000/assets/image/city.jpeg'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  .feather-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.33);
+  }
+  form{
+    z-index: 1;
+    input[type="text"] {
+      max-width: 360px;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      border-style: none;
+      padding: 1px 3px 5px 20px;
+      background-color: $offWhite;
+      color: $darkPurpleEggplant;
+      
+    }
+    button {
+      font-size: 1.2rem;
+      border-radius: 5px;
+      border-style: none;
+      padding: 5px 20px 6px 20px;
+      background: $mediumPurpleBabyShower;
+      
+    }
+  }
+}
+
+.weather-card-wrapper {
+  background: $darkPurpleEggplant;
+  padding: 30px;
+  .weather-card {
+      max-width: 300px;
+      margin: 0px auto;
+      padding: 30px;
+      border-radius: 4px;
+      background: $feather;
+      .weather-card-title {
+        font-size: 1.2rem;
+      }
+      .weather-card-description {
+        font-size: smaller;
+      }
+      .weather-card-detail {
+        display: flex;
+        justify-content: space-between;
+      }
+  }
+}

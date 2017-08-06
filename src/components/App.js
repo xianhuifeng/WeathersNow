@@ -2,9 +2,10 @@ import { Component } from 'react'
 import { SearchWeatherForm } from './SearchWeatherForm'
 import { WeatherCard } from './WeatherCard'
 import { ErrorCard } from './ErrorCard'
-import { Loader } from './Loader'
 import { Header } from './Header'
 import { PRE_URL, APPID} from '../constants'
+import 'whatwg-fetch'
+
 
 export class App extends Component {
 
@@ -12,7 +13,7 @@ export class App extends Component {
     super(props)
 
     this.state = {
-      city: "London, UK",
+      city: "Shanghai",
       isLoading: false,
       hasError: false,
       errorMessage: ""
@@ -52,13 +53,14 @@ export class App extends Component {
 			<div className="app">
         <Header />
         <SearchWeatherForm  city={this.state.city}
+                            isLoading={this.state.isLoading}
                             onFetchWeather={this.fetchWeather}/>
-        <Loader isLoading={this.state.isLoading}/>	
         { !this.state.hasError && this.state.weather ? 
           <WeatherCard  weather={this.state.weather}
                         city={this.state.city} />	: 
           <ErrorCard errorMessage={this.state.errorMessage} />
         }
+        {/* <div className="footer"><img src="../../dist/assets/image/city.jpeg" alt=""/></div> */}
 			</div>
 		)
 	}

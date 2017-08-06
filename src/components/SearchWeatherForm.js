@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import 'whatwg-fetch'
+import { Loader } from './Loader'
 
 export class SearchWeatherForm extends Component {
 
@@ -16,16 +16,18 @@ export class SearchWeatherForm extends Component {
 
   render () {
 
-    const { city, isLoading, hasError, errorMessage, onFetchWeather } = this.props
+    const { city, isLoading, onFetchWeather } = this.props
 
     return (
+      <div className="search-weather">
+        <div className="feather-cover"></div>
         <form onSubmit={this.submit}>
           <input type="text" ref="_city"
 					   defaultValue={city}/>
-
           <button>Search</button>
-          <p>{hasError ? errorMessage : ""}</p>
+          <Loader isLoading={isLoading}/>	
         </form>
-      )
+      </div>
+    )
   }
 }
