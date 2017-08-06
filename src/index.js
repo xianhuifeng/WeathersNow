@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
-// import { SkiDayCount } from './components/SkiDayCount'
+import { App } from './components/App'
 
 window.React = React
 
 render(
-	<p> Testing react first step</p>,
+	<App />,
 	document.getElementById('react-container')
 )
