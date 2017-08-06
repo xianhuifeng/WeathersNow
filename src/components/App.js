@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { SearchWeatherForm } from './SearchWeatherForm'
 import { WeatherCard } from './WeatherCard'
 import { ErrorCard } from './ErrorCard'
+import { Loader } from './Loader'
 import { PRE_URL, APPID} from '../constants'
 
 export class App extends Component {
@@ -49,8 +50,8 @@ export class App extends Component {
 		return (
 			<div className="app">
         <SearchWeatherForm  city={this.state.city}
-                            isLoading={this.state.isLoading}
-                            onFetchWeather={this.fetchWeather}/>	
+                            onFetchWeather={this.fetchWeather}/>
+        <Loader isLoading={this.state.isLoading}/>	
         { !this.state.hasError && this.state.weather ? 
           <WeatherCard  weather={this.state.weather}
                         city={this.state.city} />	: 

@@ -24,7 +24,6 @@ export class SearchWeatherForm extends Component {
 					   defaultValue={city}/>
 
           <button>Search</button>
-          <p>loading {isLoading ? 'true' : 'false'}</p>
           <p>{hasError ? errorMessage : ""}</p>
         </form>
       )
