@@ -3,6 +3,7 @@ import { SearchWeatherForm } from './SearchWeatherForm'
 import { WeatherCard } from './WeatherCard'
 import { ErrorCard } from './ErrorCard'
 import { Loader } from './Loader'
+import { Header } from './Header'
 import { PRE_URL, APPID} from '../constants'
 
 export class App extends Component {
@@ -49,6 +50,7 @@ export class App extends Component {
   render() {
 		return (
 			<div className="app">
+        <Header />
         <SearchWeatherForm  city={this.state.city}
                             onFetchWeather={this.fetchWeather}/>
         <Loader isLoading={this.state.isLoading}/>	
