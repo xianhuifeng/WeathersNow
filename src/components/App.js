@@ -21,13 +21,16 @@ export class App extends Component {
     this.fetchWeather = this.fetchWeather.bind(this)
   }
 
+  /**
+   * handle fetching weather from http://openweathermap.org/ API
+   * @param {String} city 
+   */
   fetchWeather(city) {
     this.setState({ isLoading: true })
 
     const url = PRE_URL + city + APPID
 
-    //Fetch weather and dispatch state
-    fetch(url)
+    fetch(url)//Fetch weather and dispatch state
       .then((response) => {
         this.setState({ isLoading: false })
 

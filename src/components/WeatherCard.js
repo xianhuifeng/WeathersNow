@@ -8,10 +8,22 @@ export class WeatherCard extends Component {
     this.ConvertWeatherTemp = this.ConvertWeatherTemp.bind(this)
   }
 
+  /**
+   * handle weather icon mappings
+   * TODO: Use better icons from React-icons. And add animations.
+   * @param {String} name 
+   * @return String
+   */
   MapWeatherIcon(name) {
     return "http://openweathermap.org/img/w/" + name + ".png";
   }
 
+  /**
+   * convert weather temp to human readable format
+   * TODO: Convert to F and C both.
+   * @param {Integer} temp 
+   * @return String 
+   */
   ConvertWeatherTemp(temp) {
     return (temp / 10).toFixed(1) + "℃";
   }

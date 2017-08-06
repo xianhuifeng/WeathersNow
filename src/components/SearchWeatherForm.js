@@ -8,11 +8,14 @@ export class SearchWeatherForm extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  /**
+   * handle form submit.
+   * TODO: Form validation on Frontend. 
+   */
   submit(e) {
     e.preventDefault()
     this.props.onFetchWeather(this.refs._city.value)
   }
-
 
   render() {
 
